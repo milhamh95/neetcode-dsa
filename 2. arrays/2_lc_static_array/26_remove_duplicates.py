@@ -1,5 +1,12 @@
+from typing import List
+
+
+# https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+from typing import List
+
 class Solution:
-    def removeDuplicates(self, nums: list[int]) -> int:
+    def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) == 0:
             return 0
 
