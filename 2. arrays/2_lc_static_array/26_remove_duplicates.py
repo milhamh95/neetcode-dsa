@@ -20,6 +20,4 @@ class Solution:
                 nums[ctr] = nums[idx]
                 ctr += 1
 
-        print("nums:", nums)
-
         return ctr

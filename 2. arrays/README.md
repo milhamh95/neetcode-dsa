@@ -104,6 +104,7 @@ Allocate for new space for new array is expensive.
 ### Time Complexity
 
 - Read / write with index element = `O(1)`
+- Check all element = `O(N)`
 - Insert / remove end = `O(1)`
 - Insert middle = `O(n)`
 - Remove middle = `O(n)`
