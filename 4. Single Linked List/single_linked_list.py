@@ -44,6 +44,25 @@ class LinkedList:
 
             cur_node = cur_node.next
 
+    def insert_at_middle(self, idx, val):
+        if idx > (self.size - 1) or idx < 0:
+            print("index is out of range")
+            return
+
+        new_node = Node(val)
+        ctr = 0
+        cur_node = self.head
+
+        while ctr < idx:
+            if ctr == idx - 1:
+                next_node = cur_node.next
+                cur_node.next = new_node
+                new_node.next = next_node
+
+            cur_node = cur_node.next
+            ctr += 1
+
+
     def print(self):
         if self.head == None:
             print("Linked List is empty")
@@ -79,6 +98,7 @@ class LinkedList:
     def remove_by_index(self, idx):
         if idx > (self.size - 1) or idx < 0:
             print("index is out of range")
+            return
 
         ctr = 0
         prev = None
@@ -99,17 +119,18 @@ class LinkedList:
             print("linked list is empty")
             return
 
-        ctr = 0
+        # kasih pointer node ke 2 terakhir dari linked list
+        second_to_last_node = self.head
 
-        cur_node = self.head
-        while ctr <= self.size - 2:
-            if ctr == self.size - 2:
-                cur_node.next = None
-                self.size -= 1
-                return
+        # loop sampai posisi node ke 2 terakhir dari linked list
+        # jika node terakhir dari second_to_last_node tidak null
+        while (second_to_last_node.next.next):
+            # pindahkan second_to_last_node
+            # ke node - 1 sebelum node terakhir
+            second_to_last_node = second_to_last_node.next
 
-            cur_node = cur_node.next
-            ctr += 1
+        second_to_last_node.next = None
+        self.size -= 1
 
     def remove_beginning(self):
         if self.size == 1:
@@ -162,19 +183,21 @@ ll.insert_at_beginning(1)
 ll.insert_at_beginning(2)
 ll.insert_at_end(4)
 ll.insert_at_end(10)
+ll.insert_at_middle(1, 90)
 ll.print()
 ll.print_size()
-ll.get_by_index(2)
-ll.remove_by_index(1)
-ll.print()
-ll.print_size()
-ll.remove_end()
-ll.print()
-ll.print_size()
-ll.remove_beginning()
-ll.print()
-ll.print_size()
-ll.modify_at_index(1, 104)
-ll.print()
-ll.print_size()
+# ll.get_by_index(2)
+# ll.remove_by_index(1)
+# ll.print()
+# ll.print_size()
+# ll.remove_end()
+# ll.print()
+# ll.print_size()
+# ll.remove_beginning()
+# ll.print()
+# ll.print_size()
+# ll.modify_at_index(1, 104)
+# ll.remove_end()
+# ll.print()
+# ll.print_size()
 
