@@ -1,6 +1,7 @@
 # Linked List
 
-- Contains of value and next
+- Contains of value and next (pointer to next node)
+- There is head -> first node of the linked list
 
 ## Time Complexity
 

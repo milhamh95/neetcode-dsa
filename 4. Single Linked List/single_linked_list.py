@@ -2,6 +2,9 @@
 # Write Python 3 code in this online editor and run it.
 
 # create node
+from operator import ne
+
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -45,23 +48,25 @@ class LinkedList:
             cur_node = cur_node.next
 
     def insert_at_middle(self, idx, val):
+        cur_node = self.head
+        new_node = Node(val)
+
+        if idx == 0:
+            new_node.next = cur_node
+            self.head = new_node
+            self.size += 1
+            return
+
         if idx > (self.size - 1) or idx < 0:
             print("index is out of range")
             return
 
-        new_node = Node(val)
-        ctr = 0
-        cur_node = self.head
-
-        while ctr < idx:
-            if ctr == idx - 1:
-                next_node = cur_node.next
-                cur_node.next = new_node
-                new_node.next = next_node
-
+        for _ in range(idx - 1):
             cur_node = cur_node.next
-            ctr += 1
 
+        new_node.next = cur_node.next
+        cur_node.next = new_node
+        self.size += 1
 
     def print(self):
         if self.head == None:
@@ -179,11 +184,13 @@ class LinkedList:
 
 
 ll = LinkedList()
-ll.insert_at_beginning(1)
-ll.insert_at_beginning(2)
 ll.insert_at_end(4)
 ll.insert_at_end(10)
-ll.insert_at_middle(1, 90)
+ll.insert_at_end(45)
+ll.insert_at_end(107)
+ll.insert_at_end(44564)
+ll.insert_at_end(104564)
+ll.insert_at_middle(3, 90)
 ll.print()
 ll.print_size()
 # ll.get_by_index(2)

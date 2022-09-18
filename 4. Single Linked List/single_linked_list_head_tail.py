@@ -37,16 +37,12 @@ class LinkedList:
 
         new_node = Node(val)
         cur_node = self.head
-        ctr = 0
 
-        while ctr < idx:
-            if ctr == idx - 1:
-                next_node = cur_node.next
-                new_node.next = next_node
-                cur_node.next = new_node
-
+        for _ in range(idx - 1):
             cur_node = cur_node.next
-            ctr += 1
+
+        new_node.next = cur_node.next
+        cur_node.next = new_node
 
     def print(self):
         elems = []
